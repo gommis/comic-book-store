@@ -23,5 +23,17 @@ def index():
     pass
 
 
+@route('/card')
+@view ('card')
+def card():
+    data = dict (book_info = comics)
+    return data
+
+@route('/buy_comic')
+@view ('buy_comic')
+def buy_comic():
+    pass
+
+
 
 run(host='0.0.0.0', port = 8080, reloader=True, debug=True)
