@@ -12,9 +12,9 @@ class Comic:
 
 
 comics = [
-    Comic("Super Dude", "3"),
-    Comic("Water Woman", "9"),
-    Comic("Lizard man", "13")
+    Comic("Super Dude", 3),
+    Comic("Water Woman", 9),
+    Comic("Lizard man", 13)
     ]
 
 @route('/')
@@ -29,10 +29,26 @@ def card():
     data = dict (book_info = comics)
     return data
 
-@route('/buy_comic')
+@route('/buy_comic/<comic_id>')
 @view ('buy_comic')
-def buy_comic():
+def buy_comic(comic_id):
+    
+    
+    comic_id = int(comic_id)
+    found_book = None
+    for comic in comics:
+        if comic.id == comic_id:
+            found_book = comic
+    data = dict (comic = found_book)
+    found_book.comic_num = found_book.comic_num - 1
+    return data
+           
+           
+@route('/re_stock')
+@view ('re_stock')
+def re_stock():
     pass
+
 
 
 
